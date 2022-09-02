@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mock:server": "nodemon --watch mockServer mockServer/index.js",
+    "mock:schema": "rover graph introspect https://rest-to-graphql-api-f1.vercel.app/graphql > mockServer/schema.graphql"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +44,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@apollo/rover": "^0.8.1",
+    "@graphql-tools/graphql-file-loader": "^7.5.3",
+    "@graphql-tools/load": "^7.7.5",
+    "apollo-server": "^3.10.2",
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
   }
 }
