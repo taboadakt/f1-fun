@@ -97,7 +97,7 @@ const Test = () => {
   return (
     <div className="p-2">
       <div className="h-2" />
-      <table>
+      <table className="container">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -118,8 +118,8 @@ const Test = () => {
                           header.getContext()
                         )}
                         {{
-                          asc: " 🔼",
-                          desc: " 🔽",
+                          asc: " ^",
+                          desc: " v",
                         }[header.column.getIsSorted() as string] ?? null}
                       </div>
                     )}
