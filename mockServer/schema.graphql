@@ -74,7 +74,7 @@ type Location {
   country: String!
 }
 type Driver {
-  id: String!
+  id: ID!
   url: String!
   urlMobile: String!
   name: String!
@@ -92,7 +92,7 @@ type DriverStanding {
   constructors: [Constructor!]!
 }
 type Constructor {
-  id: String!
+  id: ID!
   url: String!
   urlMobile: String!
   name: String!

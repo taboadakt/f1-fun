@@ -34,7 +34,7 @@ export type GDriver = {
   __typename?: 'Driver';
   code?: Maybe<Scalars['String']>;
   dateOfBirth: Scalars['String'];
-  id: Scalars['String'];
+  id: Scalars['ID'];
   name: Scalars['String'];
   nationality: Scalars['String'];
   permanentNumber?: Maybe<Scalars['String']>;
@@ -182,4 +182,4 @@ export type GDriverInfoByYearQueryVariables = Exact<{
 }>;
 
 
-export type GDriverInfoByYearQuery = { __typename?: 'Query', driversYear: Array<{ __typename?: 'Driver', id: string, name: string, nationality: string, permanentNumber?: string, code?: string }>, seasonPilotsRanking: Array<{ __typename?: 'DriverStanding', points: string, wins: string, position: string, driver: { __typename?: 'Driver', id: string }, constructors: Array<{ __typename?: 'Constructor', name: string }> }> };
+export type GDriverInfoByYearQuery = { __typename?: 'Query', seasonPilotsRanking: Array<{ __typename?: 'DriverStanding', points: string, wins: string, position: string, driver: { __typename?: 'Driver', id: string, name: string, nationality: string, permanentNumber?: string, code?: string }, constructors: Array<{ __typename?: 'Constructor', name: string, id: string }> }> };

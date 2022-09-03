@@ -1,6 +1,5 @@
 import { createClient } from "urql";
 
-console.log("env", process.env.REACT_APP_MOCK);
 export const client = createClient({
   url:
     process.env.REACT_APP_MOCK === "true"
