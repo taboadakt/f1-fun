@@ -3,7 +3,7 @@ import { Provider } from "urql";
 import { client } from "./graphql/client";
 import DriverTableByYear from "./components/DriversByYearTable";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <Provider value={client}>

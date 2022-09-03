@@ -1,0 +1,10 @@
+schema: './mockServer/schema.graphql'
+documents: './src/graphql/requests/*.ts'
+generates:
+  ./src/graphql/types/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      typesPrefix: G
+      maybeValue: T
