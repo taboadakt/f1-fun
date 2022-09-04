@@ -20,9 +20,15 @@ const mocks = {
     permanentNumber: () => faker.datatype.number({ min: 0, max: 99 }),
   }),
   DriverStanding: () => ({
-    constructors: () => [{ name: faker.vehicle.manufacturer() }],
+    constructors: () => [...new Array(1)],
     points: () => faker.datatype.number({ min: 0, max: 200 }),
     wins: () => faker.datatype.number({ min: 0, max: 10 }),
+  }),
+  Constructor: () => ({
+    name: () => faker.vehicle.manufacturer(),
+  }),
+  Season: () => ({
+    year: () => `${faker.datatype.number({ min: 1950, max: 2022 })}`,
   }),
 };
 
