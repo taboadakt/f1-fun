@@ -20,3 +20,11 @@ export const DRIVER_INFO_BY_YEAR = gql`
     }
   }
 `;
+
+export const SEASONS_LIST = gql`
+  query SeasonsList {
+    seasonsList {
+      year
+    }
+  }
+`;

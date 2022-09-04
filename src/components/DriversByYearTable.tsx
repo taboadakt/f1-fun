@@ -15,7 +15,8 @@ import { ArrayElement, SeasonPilotsRanking } from "../graphql/types";
 
 const CONSTRUCTOR_ID = "constructors";
 type Constructor = ArrayElement<SeasonPilotsRanking["constructors"]>;
-const Test = () => {
+
+const DriversByYearTable = ({ year }: { year?: string }) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const columns = React.useMemo<ColumnDef<SeasonPilotsRanking>[]>(
@@ -33,16 +34,18 @@ const Test = () => {
         header: "Name",
       },
       {
-        accessorFn: (row) => row.driver.nationality,
-        id: "nationality",
-        cell: (info) => info.getValue(),
-        header: "Nationality",
-      },
-      {
-        accessorFn: (row) => row.driver.permanentNumber,
-        id: "permanentNumber",
-        cell: (info) => info.getValue(),
-        header: "Permanent Number",
+        accessorFn: (row) => row.constructors,
+        id: CONSTRUCTOR_ID,
+        cell: (info) =>
+          `${(info.getValue() as Constructor[]).map((val) => val.name)}`,
+        header: "Constructors",
+        sortingFn: (rowA, rowB) => {
+          const constructorsA: Constructor[] = rowA.getValue(CONSTRUCTOR_ID);
+          const constructorsB: Constructor[] = rowB.getValue(CONSTRUCTOR_ID);
+          if (constructorsA[0].name > constructorsB[0].name) return 1;
+          if (constructorsA[0].name < constructorsB[0].name) return -1;
+          return 0;
+        },
       },
       {
         accessorFn: (row) => row.points,
@@ -57,18 +60,16 @@ const Test = () => {
         header: "Wins",
       },
       {
-        accessorFn: (row) => row.constructors,
-        id: CONSTRUCTOR_ID,
-        cell: (info) =>
-          `${(info.getValue() as Constructor[]).map((val) => val.name)}`,
-        header: "Constructors",
-        sortingFn: (rowA, rowB) => {
-          const constructorsA: Constructor[] = rowA.getValue(CONSTRUCTOR_ID);
-          const constructorsB: Constructor[] = rowB.getValue(CONSTRUCTOR_ID);
-          if (constructorsA[0].name > constructorsB[0].name) return 1;
-          if (constructorsA[0].name < constructorsB[0].name) return -1;
-          return 0;
-        },
+        accessorFn: (row) => row.driver.nationality,
+        id: "nationality",
+        cell: (info) => info.getValue(),
+        header: "Nationality",
+      },
+      {
+        accessorFn: (row) => row.driver.permanentNumber,
+        id: "permanentNumber",
+        cell: (info) => info.getValue(),
+        header: "Permanent Number",
       },
     ],
     []
@@ -76,7 +77,7 @@ const Test = () => {
 
   const [{ data, fetching, error }] = useQuery<GDriverInfoByYearQuery>({
     query: DRIVER_INFO_BY_YEAR,
-    variables: { year: "2007" },
+    variables: { year },
   });
 
   const table = useReactTable({
@@ -148,9 +149,8 @@ const Test = () => {
           })}
         </tbody>
       </table>
-      <div>{table.getRowModel().rows.length} Rows</div>
     </div>
   );
 };
 
-export default Test;
+export default DriversByYearTable;

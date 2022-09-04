@@ -32,6 +32,18 @@
    padding-bottom: 2em;
    color: #FB667A;
  }
+
+
+ .seasonsList {
+  font-size:2em; 
+  font-family: 'Open Sans', sans-serif;
+   font-weight: 500;
+   line-height: 1.42em;
+   color:#A7A1AE;
+   background-color:#1F2739;
+   margin-left: 1%;
+   margin-top: 1%;
+ }
  
  h2 a {
    font-weight: 700;

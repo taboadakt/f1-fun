@@ -23,7 +23,8 @@ export type GCircuit = {
 
 export type GConstructor = {
   __typename?: 'Constructor';
-  id: Scalars['String'];
+  color: Scalars['String'];
+  id: Scalars['ID'];
   name: Scalars['String'];
   nationality: Scalars['String'];
   url: Scalars['String'];
@@ -183,3 +184,8 @@ export type GDriverInfoByYearQueryVariables = Exact<{
 
 
 export type GDriverInfoByYearQuery = { __typename?: 'Query', seasonPilotsRanking: Array<{ __typename?: 'DriverStanding', points: string, wins: string, position: string, driver: { __typename?: 'Driver', id: string, name: string, nationality: string, permanentNumber?: string, code?: string }, constructors: Array<{ __typename?: 'Constructor', name: string, id: string }> }> };
+
+export type GSeasonsListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GSeasonsListQuery = { __typename?: 'Query', seasonsList: Array<{ __typename?: 'Season', year: string }> };

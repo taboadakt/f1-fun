@@ -97,6 +97,7 @@ type Constructor {
   urlMobile: String!
   name: String!
   nationality: String!
+  color: String!
 }
 "Exposes a URL that specifies the behaviour of this scalar."
 directive @specifiedBy(
